@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -34,8 +35,19 @@ public class UserRepositoryTest {
                 )
         );
 
+        // Test assertion
         assertThat(user).isNotNull();
         assertThat(repository.count()).isEqualTo(1L);
+    }
+
+    @Test
+    public void testFindByEmail() {
+        User user = UserFactory.newRandomOfficer();
+        repository.save(user);
+        Optional<User> optional = repository.findByEmailIgnoreCase(user.getEmail());
+
+        //Test assertion
+        assertThat(optional).isNotEmpty().contains(user);
     }
 
     @TestConfiguration

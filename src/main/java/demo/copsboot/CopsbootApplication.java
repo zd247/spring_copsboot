@@ -15,6 +15,10 @@ public class CopsbootApplication {
 		SpringApplication.run(CopsbootApplication.class, args);
 	}
 
+	/**
+	 * this method instantiates, configures, and initializes
+	 * a new object to be managed by the Spring IoC container
+	 */
 	@Bean
 	public UniqueIdGenerator<UUID> uniqueIdGenerator () {
 		return new InMemoryUniqueIdGenerator();

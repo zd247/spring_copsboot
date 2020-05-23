@@ -24,6 +24,9 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 public class OAuth2ServerConfiguration {
     private static final String RESOURCE_ID = "copsboot-service";
 
+    /**
+     * indicates that its primary purpose is as a source of bean definitions
+     */
     @Configuration
     @EnableAuthorizationServer
     protected static class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
